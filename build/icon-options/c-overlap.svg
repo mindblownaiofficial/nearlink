@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="100" x2="0" y2="924" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1b1b24" /><stop offset="1" stop-color="#09090b" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.55">
+      <stop offset="0" stop-color="#4f3dff" stop-opacity="0.5" /><stop offset="1" stop-color="#4f3dff" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="rim" x1="0" y1="100" x2="0" y2="924" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22" /><stop offset="1" stop-color="#ffffff" stop-opacity="0.04" />
+    </linearGradient>
+    <linearGradient id="neon" x1="250" y1="774" x2="774" y2="250" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1dd9f9" /><stop offset="0.5" stop-color="#7a6bff" /><stop offset="1" stop-color="#fc2dfd" />
+    </linearGradient>
+    <filter id="soft" x="-0.4" y="-0.4" width="1.8" height="1.8">
+      <feGaussianBlur stdDeviation="22" result="b" /><feColorMatrix in="b" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.75 0" result="g" />
+      <feMerge><feMergeNode in="g" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <clipPath id="left"><circle cx="412" cy="512" r="196" /></clipPath>
+    <linearGradient id="lens" x1="512" y1="340" x2="512" y2="684" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffffff" /><stop offset="1" stop-color="#b9b2ff" /></linearGradient>
+  </defs>
+  <!-- macOS icon grid: an 824px rounded square centred on a 1024px canvas -->
+  <rect x="100" y="100" width="824" height="824" rx="186" fill="url(#bg)" />
+  <rect x="100" y="100" width="824" height="824" rx="186" fill="url(#glow)" />
+  <rect x="103" y="103" width="818" height="818" rx="183" fill="none" stroke="url(#rim)" stroke-width="6" />
+  <g filter="url(#soft)">
+    <circle cx="412" cy="512" r="196" fill="#1dd9f9" fill-opacity="0.16" stroke="#1dd9f9" stroke-width="44" />
+    <circle cx="612" cy="512" r="196" fill="#fc2dfd" fill-opacity="0.16" stroke="#fc2dfd" stroke-width="44" />
+    <circle cx="612" cy="512" r="174" fill="url(#lens)" clip-path="url(#left)" />
+  </g>
+</svg>

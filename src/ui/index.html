@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="theme-color" content="#0a0a0b" />
+    <title>Nearlink</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <svg class="brand__mark" viewBox="100 100 824 824" aria-hidden="true">
+            <defs>
+              <clipPath id="brand-over"><rect x="390" y="330" width="244" height="182" /></clipPath>
+            </defs>
+            <rect
+              x="103"
+              y="103"
+              width="818"
+              height="818"
+              rx="183"
+              fill="#15151b"
+              stroke="rgba(255,255,255,0.16)"
+              stroke-width="22"
+            />
+            <g transform="rotate(-45 512 512)" fill="none" stroke-width="72">
+              <rect x="182" y="402" width="370" height="220" rx="110" stroke="#1dd9f9" />
+              <rect x="472" y="402" width="370" height="220" rx="110" stroke="#fc2dfd" />
+              <rect x="182" y="402" width="370" height="220" rx="110" stroke="#1dd9f9" clip-path="url(#brand-over)" />
+            </g>
+          </svg>
+          <div>
+            <strong>Nearlink</strong>
+            <span>Private local transfers</span>
+          </div>
+        </div>
+        <div class="app-header__status" id="net-status" role="status"></div>
+        <div class="app-header__tools">
+          <button class="header-button" data-action="refresh" title="Look for nearby computers again">
+            <span data-icon="refresh"></span><span>Refresh</span>
+          </button>
+          <button class="header-button" data-action="open-settings" title="Settings">
+            <span data-icon="sliders"></span><span>Settings</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="project-bar">
+        <label class="project-bar__name">
+          <span>This computer</span>
+          <input id="self-name" maxlength="80" spellcheck="false" autocomplete="off" aria-label="Computer name" />
+        </label>
+        <nav id="tabs" data-view="devices" aria-label="Sections">
+          <button data-tab="devices">Devices</button>
+          <button data-tab="files">Files</button>
+          <button data-tab="transfers">Transfers<span class="tab-count" id="transfer-count" hidden></span></button>
+          <button data-tab="shared">Shared folders</button>
+        </nav>
+        <div class="project-bar__actions">
+          <button class="button button--primary" data-action="add-share">
+            <span data-icon="plus"></span>Share a folder
+          </button>
+        </div>
+      </div>
+
+      <div class="app-body">
+        <aside class="workspace-sidebar">
+          <div class="sidebar-heading"><span>Nearby computers</span><strong id="device-count">0</strong></div>
+          <div class="device-list" id="device-list"></div>
+          <div class="sidebar-foot">
+            <span class="status-dot is-ok"></span>
+            <div>
+              <strong>Local network only</strong>
+              <span>No cloud. No account.</span>
+            </div>
+          </div>
+        </aside>
+        <main class="workspace" id="main">
+          <div class="launch">
+            <div class="launch__loader" aria-hidden="true">
+              <div class="launch__orbit"></div>
+              <div class="launch__orbit launch__orbit--counter"></div>
+            </div>
+            <p>Starting your local workspace…</p>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div id="overlays"></div>
+    <div id="toasts" aria-live="polite"></div>
+
+    <script src="icons.js"></script>
+    <script src="file-view.js"></script>
+    <script src="morph.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

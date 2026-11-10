@@ -1,0 +1,68 @@
+{
+  "name": "nearlink",
+  "productName": "Nearlink",
+  "version": "0.5.0",
+  "description": "Private file transfers between nearby Mac and Windows computers",
+  "main": "src/main.cjs",
+  "type": "commonjs",
+  "private": true,
+  "author": "Nearlink",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --data-dir=.dev-data",
+    "test": "node --test",
+    "format": "prettier --write \"src/**/*.{cjs,js,css,html}\" \"test/**/*.cjs\"",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win --x64",
+    "icon": "electron scripts/make-icon.cjs",
+    "dist:all": "npm run dist:mac && npm run dist:win"
+  },
+  "dependencies": {
+    "bonjour-service": "^1.4.4",
+    "selfsigned": "^5.5.0"
+  },
+  "devDependencies": {
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0",
+    "prettier": "^3.9.10"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  },
+  "build": {
+    "appId": "local.nearlink.desktop",
+    "productName": "Nearlink",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": [
+        "dmg"
+      ],
+      "extendInfo": {
+        "NSLocalNetworkUsageDescription": "Nearlink finds your other computers on this network and transfers files directly between them.",
+        "NSBonjourServices": [
+          "_nearlink._tcp"
+        ]
+      },
+      "identity": "-"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "Nearlink"
+    },
+    "artifactName": "Nearlink-${version}-${os}-${arch}.${ext}"
+  }
+}
